@@ -1,25 +1,7 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import slugify from 'slugify';
+import { ITour } from '../interfaces';
 
-interface ITour extends Document {
-  name: string;
-  slug: string;
-  duration: number;
-  maxGroupSize: number;
-  difficulty: 'easy' | 'medium' | 'difficult';
-  ratingsAverage: number;
-  ratingsQuantity: number;
-  price: number;
-  priceDiscount?: number;
-  summary: string;
-  description?: string;
-  imageCover: string;
-  images: string[];
-  createdAt: Date;
-  startDates: Date[];
-  secretTour: boolean;
-  durationWeeks?: number;
-}
 
 const tourSchema = new Schema<ITour>(
   {
