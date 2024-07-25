@@ -2,7 +2,6 @@
 node_modules/
 
 # Other files and directories to ignore
-.env
 dist/
 build/
 *.log

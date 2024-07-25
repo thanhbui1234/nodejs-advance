@@ -3,11 +3,11 @@ import TourService from "../services";
 import { SuccessResponse } from "../middleware/responses.middeware";
 
 class TourController {
-  getAllTours = async (req: Request, res: Response, next: NextFunction) => {
+  getAllTours = async (req:Request, res:Request, next :NextFunction) => {
     new SuccessResponse({
-      message: "getAllTours successfully completed",
-      metadata: await TourService.getAllTuours()
-    }).send(res);
+      message: "getAllTours success!",
+      metadata: await TourService.getAllTours(req.query)
+    }).send(res as any)
   }
 
   createTour = async (req: Request, res: Response, next: NextFunction) => {
