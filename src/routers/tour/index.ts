@@ -12,6 +12,6 @@ router
   .route("/:id")
   .get(catchAsync(tourController.getTourById))
   .patch(catchAsync(tourController.updateTourById))
-  .delete(catchAsync(tourController.deleteTourById));
+  .delete((tourController.deleteTourById));
 
 export default router;

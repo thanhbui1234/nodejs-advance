@@ -1,4 +1,5 @@
 import { Response } from "express";
+import { CreatedParams, OKParams, SuccessResponseParams } from "../interfaces/middleware";
 
 const StatusCode = {
   OK: 200,
@@ -10,12 +11,7 @@ const ReasonStatusCode = {
   OK: 'Success'
 };
 
-interface SuccessResponseParams {
-  message?: string;
-  statusCode?: number;
-  reasonStatusCode?: string;
-  metadata?: Record<string, any>;
-}
+
 
 export class SuccessResponse {
   message: string;
@@ -38,10 +34,6 @@ export class SuccessResponse {
   }
 }
 
-interface OKParams {
-  message?: string;
-  metadata?: Record<string, any>;
-}
 
 export class OK extends SuccessResponse {
   constructor({ message, metadata }: OKParams) {
@@ -49,9 +41,6 @@ export class OK extends SuccessResponse {
   }
 }
 
-interface CreatedParams extends SuccessResponseParams {
-  options?: Record<string, any>;
-}
 
 export class CREATED extends SuccessResponse {
   options: Record<string, any>;

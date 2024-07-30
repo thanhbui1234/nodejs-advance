@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import TourService from "../services";
-import { SuccessResponse } from "../middleware/responses.middeware";
+import { SuccessResponse ,CREATED } from "../middleware/responses.middeware";
 
 class TourController {
   getAllTours = async (req:Request, res:Request, next :NextFunction) => {
@@ -11,7 +11,7 @@ class TourController {
   }
 
   createTour = async (req: Request, res: Response, next: NextFunction) => {
-    new SuccessResponse({
+    new CREATED({
       message: "createTour success!",
       metadata: await TourService.createTour(req.body)
     }).send(res)

@@ -1,5 +1,6 @@
 // Thao tac voi database
 
+import { ITour } from "../interfaces";
 import tourModel from "../models/tour.model";
 import APIFeatures from "../utils";
 
@@ -15,25 +16,29 @@ export default class TourService {
     return await features.query;
   }
 
-  static async createTour(data: any) {
+  static async createTour(data: ITour) {
       return await tourModel.create(data);
   }
 
   static async getTourById(id: string) {
+   const tour = await  tourModel.findById(id)
     return {
-      msg: "getTourById"
+      msg: "getTourById",
+      data :tour,
     }
   }
 
-  static async updateTourById(id: string, tour: any) {
+  static async updateTourById(id: string, tour: ITour) {
+    await tourModel.findByIdAndUpdate(id,tour)
     return {
-      msg: "updateTourById"
+      msg: "updateTourById heh"
     }
   }
 
   static async deleteTourById(id: string) {
+    await tourModel.findByIdAndDelete(id)
     return {
-      msg: "deleteTourById"
+        msg: "deleteTourById"
     }
   }
 
